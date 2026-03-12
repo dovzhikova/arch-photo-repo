@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Architectural Photography Israel</title>
+<title>FRAMESHIFT — Architectural Photography Israel</title>
 <meta name="description" content="Professional architectural photography in Israel — shoots and fine art prints for architects, designers, developers, and collectors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
@@ -40,9 +40,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-[dir="rtl"] body {
-  font-family: var(--font-he-sans);
-}
+[dir="rtl"] body { font-family: var(--font-he-sans); }
 
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
@@ -51,387 +49,553 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ─── NAV ─── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(250, 250, 249, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--stone-200);
-  transition: box-shadow 0.3s;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--stone-100);
+  transition: box-shadow 0.4s ease;
 }
-.nav.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+.nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
 .nav-inner {
-  max-width: 1200px; margin: 0 auto;
+  max-width: 1400px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 64px;
+  padding: 0 48px; height: 80px;
 }
 .nav-logo {
   font-family: var(--font-serif);
-  font-size: 1.15rem; font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 1.25rem; font-weight: 600;
+  letter-spacing: -0.03em;
   color: var(--stone-900);
+  text-transform: uppercase;
 }
 [dir="rtl"] .nav-logo { font-family: var(--font-he-serif); }
 
-.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links { display: flex; gap: 40px; align-items: center; }
 .nav-links a {
-  font-size: 0.85rem; font-weight: 500; color: var(--stone-600);
-  transition: color 0.2s; letter-spacing: 0.02em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 500; color: var(--stone-500);
+  transition: color 0.3s; letter-spacing: 0.25em; text-transform: uppercase;
 }
 .nav-links a:hover { color: var(--stone-900); }
 
 .lang-toggle {
-  display: flex; background: var(--stone-200); border-radius: 6px; overflow: hidden;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--stone-400); font-weight: 500;
 }
 .lang-toggle button {
-  padding: 5px 12px; font-size: 0.78rem; font-weight: 500;
-  color: var(--stone-500); transition: all 0.2s;
+  font-size: 0.7rem; font-weight: 500;
+  color: var(--stone-400); transition: color 0.2s;
+  letter-spacing: 0.15em; text-transform: uppercase;
 }
-.lang-toggle button.active {
-  background: var(--stone-800); color: white;
-}
-
-.nav-cta {
-  padding: 8px 20px; background: var(--stone-900); color: white;
-  font-size: 0.82rem; font-weight: 500; border-radius: 4px;
-  transition: background 0.2s; letter-spacing: 0.02em;
-}
-.nav-cta:hover { background: var(--stone-700); }
+.lang-toggle button.active { color: var(--stone-900); }
+.lang-sep { width: 1px; height: 14px; background: var(--stone-200); }
 
 .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--stone-700); }
 
 /* ─── HERO ─── */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; align-items: center;
-  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; text-align: center;
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background:
-    linear-gradient(135deg, rgba(28,25,23,0.75) 0%, rgba(28,25,23,0.35) 50%, rgba(28,25,23,0.6) 100%),
-    url('photos/_DSC3664_web.jpg') center/cover;
+  background: url('photos/_DSC3664_web.jpg') center/cover;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle, transparent 10%, rgba(28,25,23,0.5) 100%);
+}
+.hero-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(28,25,23,0.72) 0%, rgba(28,25,23,0.4) 50%, rgba(28,25,23,0.6) 100%);
 }
 .hero-content {
   position: relative; z-index: 2;
-  max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px;
-  width: 100%;
+  max-width: 800px; margin: 0 auto; padding: 120px 24px 80px;
+  display: flex; flex-direction: column; align-items: center;
 }
 .hero-tag {
   display: inline-block;
-  font-size: 0.72rem; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.18em; color: var(--amber-500);
-  margin-bottom: 24px;
-  border: 1px solid rgba(198,146,42,0.4); padding: 6px 16px; border-radius: 2px;
+  font-size: 0.85rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.35em; color: var(--amber-500);
+  margin-bottom: 32px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.2);
 }
 .hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 400; line-height: 1.12;
-  color: white; max-width: 700px;
-  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400; line-height: 1.1;
+  color: white; letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 [dir="rtl"] .hero h1 { font-family: var(--font-he-serif); }
 
 .hero p {
-  font-size: 1.05rem; color: var(--stone-300);
-  max-width: 520px; line-height: 1.7; margin-bottom: 36px;
+  font-size: 1.1rem; color: white;
+  max-width: 640px; line-height: 1.7; margin-bottom: 48px;
+  font-weight: 400; opacity: 0.85;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.25);
 }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-primary {
-  padding: 14px 32px; background: white; color: var(--stone-900);
-  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; border-radius: 2px;
-  transition: all 0.2s;
+.hero-cta {
+  padding: 18px 48px;
+  background: white; color: var(--stone-900);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.btn-primary:hover { background: var(--stone-100); }
-.btn-outline {
-  padding: 14px 32px;
-  border: 1px solid rgba(255,255,255,0.35); color: white;
-  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
-  text-transform: uppercase; border-radius: 2px;
-  transition: all 0.2s;
+.hero-cta:hover { background: var(--amber-500); color: white; }
+.hero-cta-outline {
+  padding: 18px 48px;
+  border: 2px solid rgba(255,255,255,0.8); color: white;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; background: transparent;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.btn-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+.hero-cta-outline:hover { background: white; color: var(--stone-900); border-color: white; }
 
-.hero-stats {
-  position: absolute; bottom: 48px; right: 24px;
-  display: flex; gap: 48px;
+.hero-scroll {
+  position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.4); font-size: 1.4rem;
+  animation: bounce 2s infinite;
 }
-.hero-stat { text-align: right; }
-[dir="rtl"] .hero-stat { text-align: left; }
-.hero-stat-num {
-  font-family: var(--font-serif);
-  font-size: 2rem; font-weight: 400; color: white;
-}
-.hero-stat-label {
-  font-size: 0.72rem; text-transform: uppercase;
-  letter-spacing: 0.12em; color: var(--stone-400); margin-top: 2px;
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
 }
 
-/* ─── SECTIONS ─── */
-.section {
-  padding: 100px 24px;
+/* ─── SECTIONS (LUXURY SPACING) ─── */
+.section-luxury {
+  padding: 160px 48px;
   max-width: 1200px; margin: 0 auto;
 }
 .section-dark { background: var(--stone-900); }
-.section-dark .section { color: white; }
-.section-alt { background: var(--stone-100); }
 
 .section-tag {
-  font-size: 0.7rem; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.18em; color: var(--amber-600); margin-bottom: 14px;
+  font-size: 0.65rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.4em; color: var(--amber-500); margin-bottom: 16px;
 }
-.section-dark .section-tag { color: var(--amber-500); }
-
-.section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 400; line-height: 1.2; margin-bottom: 16px;
-}
-[dir="rtl"] .section-title { font-family: var(--font-he-serif); }
-.section-dark .section-title { color: white; }
-
-.section-desc {
-  font-size: 1rem; color: var(--stone-500); max-width: 560px; line-height: 1.7;
-  margin-bottom: 48px;
-}
-.section-dark .section-desc { color: var(--stone-400); }
+.accent-line { width: 80px; height: 1px; background: var(--amber-500); margin-bottom: 48px; }
 
 /* ─── SERVICES ─── */
 .services-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 2px; background: var(--stone-200);
-  border: 1px solid var(--stone-200);
+  gap: 96px; align-items: start;
 }
-.service-card {
-  background: white; padding: 44px 36px;
-  transition: background 0.3s;
-}
-.service-card:hover { background: var(--stone-50); }
-.service-icon {
-  width: 48px; height: 48px; margin-bottom: 28px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--stone-200); border-radius: 2px;
-}
-.service-icon svg { width: 22px; height: 22px; stroke: var(--stone-700); }
-.service-card h3 {
+.service-block { display: flex; flex-direction: column; gap: 24px; }
+.service-block:last-child { padding-top: 192px; }
+.service-block h3 {
   font-family: var(--font-serif);
-  font-size: 1.3rem; font-weight: 400; margin-bottom: 14px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300; line-height: 1.15; color: var(--stone-900);
 }
-[dir="rtl"] .service-card h3 { font-family: var(--font-he-serif); }
-.service-card p { font-size: 0.9rem; color: var(--stone-500); line-height: 1.7; margin-bottom: 20px; }
-.service-list { list-style: none; }
+[dir="rtl"] .service-block h3 { font-family: var(--font-he-serif); }
+.service-block p {
+  font-size: 1rem; color: var(--stone-500); line-height: 1.8; font-weight: 300;
+}
+.service-list { list-style: none; display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
 .service-list li {
-  font-size: 0.82rem; color: var(--stone-600);
-  padding: 6px 0; border-top: 1px solid var(--stone-100);
-  display: flex; align-items: center; gap: 8px;
-}
-.service-list li::before {
-  content: ''; width: 4px; height: 4px;
-  background: var(--amber-500); border-radius: 50%; flex-shrink: 0;
+  font-size: 0.75rem; color: var(--stone-400);
+  text-transform: uppercase; letter-spacing: 0.15em;
 }
 
-/* ─── GALLERY (asymmetric layout) ─── */
+/* ─── GALLERY (ORIGINAL — UNCHANGED) ─── */
 .gallery-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: flex; flex-direction: column; gap: 16px;
 }
-.gallery-row {
-  display: flex;
-  gap: 16px;
-}
+.gallery-row { display: flex; gap: 16px; }
 .gallery-item {
   position: relative; overflow: hidden; cursor: pointer;
-  background: var(--stone-200);
-  border-radius: 16px;
-  flex: 1;
-  min-width: 0;
+  background: var(--stone-200); border-radius: 16px; flex: 1; min-width: 0;
 }
-.gallery-item.full { flex: 1; }
-.gallery-item.half { flex: 1; }
-.gallery-item.tall { flex: 1; }
 .gallery-item img {
   width: 100%; height: auto; display: block;
-  transition: transform 0.6s ease;
-  border-radius: 16px;
+  transition: transform 0.6s ease; border-radius: 16px;
 }
 .gallery-row.pair .gallery-item img {
   aspect-ratio: 2 / 3; object-fit: cover;
 }
 .gallery-item:hover img { transform: scale(1.03); }
 
-/* ─── PRICING ─── */
-.pricing-table {
-  width: 100%; border-collapse: collapse;
-  border: 1px solid var(--stone-200);
+.gallery-section { padding: 160px 48px; max-width: 1200px; margin: 0 auto; }
+.gallery-section .section-tag { margin-bottom: 16px; }
+.gallery-section .section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400; line-height: 1.2; margin-bottom: 16px;
 }
-.pricing-table thead { background: var(--stone-800); }
-.pricing-table th {
-  padding: 16px 24px; text-align: left;
-  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--stone-300);
+[dir="rtl"] .gallery-section .section-title { font-family: var(--font-he-serif); }
+.gallery-section .section-desc {
+  font-size: 1rem; color: var(--stone-500); max-width: 560px;
+  line-height: 1.7; margin-bottom: 48px; font-weight: 300;
 }
-[dir="rtl"] .pricing-table th { text-align: right; }
-.pricing-table td {
-  padding: 18px 24px; border-bottom: 1px solid var(--stone-100);
-  font-size: 0.9rem;
+
+/* ─── PRICING CARDS (DARK) ─── */
+.pricing-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 96px; flex-wrap: wrap; gap: 24px;
 }
-.pricing-table tr:hover td { background: var(--stone-50); }
-.pricing-name { font-weight: 600; color: var(--stone-900); }
-.pricing-price {
-  font-family: var(--font-serif); font-size: 1.1rem;
-  color: var(--stone-900); white-space: nowrap;
+.pricing-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300; color: white; line-height: 1.15;
 }
-[dir="rtl"] .pricing-price { font-family: var(--font-he-serif); }
+[dir="rtl"] .pricing-header h2 { font-family: var(--font-he-serif); }
+.pricing-header p {
+  font-size: 0.9rem; color: var(--stone-400); max-width: 400px; font-weight: 300;
+}
+.pricing-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.price-card {
+  padding: 48px; border: 1px solid var(--stone-800);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.price-card:hover { border-color: var(--stone-700); }
+.price-card.featured { border-color: var(--stone-700); background: rgba(41,37,36,0.2); }
+.price-card-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--stone-500); margin-bottom: 32px;
+}
+.price-card.featured .price-card-label { color: var(--amber-500); }
+.price-card-price {
+  font-family: var(--font-serif); font-size: 2.5rem;
+  color: white; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 32px;
+}
+[dir="rtl"] .price-card-price { font-family: var(--font-he-serif); }
+.price-card-price span { font-family: var(--font-sans); font-size: 0.85rem; color: var(--stone-600); margin-left: 8px; }
+.price-divider { height: 1px; background: var(--stone-800); margin-bottom: 32px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+.price-features li {
+  font-size: 0.82rem; color: var(--stone-400); display: flex; align-items: center; gap: 12px;
+}
+.price-features li::before {
+  content: ''; width: 4px; height: 4px; background: var(--amber-500); flex-shrink: 0;
+}
+.price-card.featured .price-features li { color: var(--stone-300); }
+.price-cta {
+  display: block; text-align: center; padding: 16px;
+  border: 1px solid var(--stone-700); color: var(--stone-400);
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.price-cta:hover { background: white; color: var(--stone-900); border-color: white; }
+.price-card.featured .price-cta {
+  background: white; color: var(--stone-900); border-color: white;
+}
+.price-card.featured .price-cta:hover { background: var(--amber-500); color: white; border-color: var(--amber-500); }
 .pricing-note {
-  font-size: 0.82rem; color: var(--stone-500); margin-top: 20px; line-height: 1.7;
+  font-size: 0.82rem; color: var(--stone-500); margin-top: 48px; line-height: 1.7; font-weight: 300;
 }
 
 /* ─── PROCESS ─── */
 .process-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+  position: relative;
 }
-.process-step { padding: 36px 28px; position: relative; }
-.process-step::after {
-  content: ''; position: absolute; top: 50px; right: 0;
-  width: 1px; height: 60px; background: var(--stone-200);
+.process-line {
+  position: absolute; top: 24px; left: 0; right: 0;
+  height: 1px; background: var(--stone-100);
 }
-.process-step:last-child::after { display: none; }
-[dir="rtl"] .process-step::after { right: auto; left: 0; }
+.process-step { position: relative; display: flex; flex-direction: column; gap: 24px; }
 .process-num {
-  font-family: var(--font-serif);
-  font-size: 2.4rem; font-weight: 400; color: var(--stone-200);
-  line-height: 1; margin-bottom: 18px;
+  width: 48px; height: 48px;
+  border: 1px solid var(--stone-100); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 0.9rem;
+  color: var(--stone-300); background: white;
+  position: relative; z-index: 2;
 }
+.process-step:first-child .process-num { color: var(--amber-500); }
 .process-step h4 {
-  font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;
-  color: var(--stone-800);
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--stone-800);
 }
-.process-step p { font-size: 0.82rem; color: var(--stone-500); line-height: 1.6; }
+.process-step p { font-size: 0.8rem; color: var(--stone-400); line-height: 1.7; font-weight: 300; }
 
 /* ─── ABOUT ─── */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
-}
-.about-img {
-  aspect-ratio: 3/4; background: var(--stone-200);
-  overflow: hidden;
-}
+.about-wrap { display: flex; align-items: stretch; }
+.about-img { width: 60%; overflow: hidden; }
 .about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-text {
+  width: 40%; padding: 96px;
+  display: flex; flex-direction: column; justify-content: center; gap: 24px;
+  background: var(--stone-50);
+}
 .about-text h3 {
   font-family: var(--font-serif);
-  font-size: 1.6rem; font-weight: 400; margin-bottom: 20px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300; line-height: 1.15; color: var(--stone-900);
 }
 [dir="rtl"] .about-text h3 { font-family: var(--font-he-serif); }
-.about-text p { font-size: 0.92rem; color: var(--stone-600); margin-bottom: 16px; line-height: 1.75; }
-.about-badges { display: flex; gap: 32px; margin-top: 32px; }
-.about-badge { text-align: center; }
-.about-badge-num { font-family: var(--font-serif); font-size: 1.6rem; color: var(--stone-900); }
-.about-badge-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone-500); margin-top: 2px; }
+.about-text p { font-size: 1rem; color: var(--stone-500); line-height: 2; font-weight: 300; }
+.about-link {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em;
+  font-weight: 600; color: var(--stone-900);
+  border-bottom: 1px solid var(--stone-900); padding-bottom: 8px;
+  display: inline-block; transition: color 0.3s;
+  align-self: flex-start;
+}
+.about-link:hover { color: var(--amber-600); border-color: var(--amber-600); }
 
-/* ─── TESTIMONIALS ─── */
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.testimonial {
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
-  padding: 36px; border-radius: 2px;
+/* ─── TESTIMONIAL (SINGLE FEATURED) ─── */
+.testimonial-section {
+  text-align: center; padding: 160px 48px;
+  max-width: 900px; margin: 0 auto;
+}
+.testimonial-quote-mark {
+  font-size: 6rem; color: rgba(198,146,42,0.15); line-height: 1;
+  margin-bottom: 48px; font-family: Georgia, serif;
 }
 .testimonial-text {
-  font-size: 0.95rem; line-height: 1.75; color: var(--stone-300);
-  margin-bottom: 24px; font-style: italic;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: white; font-weight: 300; line-height: 1.6;
+  font-style: italic; margin-bottom: 48px;
 }
-.testimonial-author { font-size: 0.85rem; font-weight: 600; color: white; }
-.testimonial-role { font-size: 0.78rem; color: var(--stone-400); margin-top: 2px; }
+[dir="rtl"] .testimonial-text { font-family: var(--font-he-serif); }
+.testimonial-author {
+  font-size: 0.8rem; font-weight: 500; color: white;
+  text-transform: uppercase; letter-spacing: 0.3em;
+}
+.testimonial-role {
+  font-size: 0.75rem; color: var(--stone-500);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px;
+}
 
 /* ─── CONTACT ─── */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.contact-form label {
-  font-size: 0.75rem; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.08em; color: var(--stone-600); margin-bottom: 4px; display: block;
+.contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 128px; }
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300; color: var(--stone-900); line-height: 1.1;
+  margin-bottom: 64px;
 }
-.contact-form input, .contact-form select, .contact-form textarea {
-  width: 100%; padding: 12px 16px;
-  border: 1px solid var(--stone-200); background: white;
-  font-family: var(--font-sans); font-size: 0.9rem;
-  color: var(--stone-800); border-radius: 2px;
-  transition: border-color 0.2s;
+[dir="rtl"] .contact-title { font-family: var(--font-he-serif); }
+
+.contact-form { display: flex; flex-direction: column; gap: 48px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.form-field { position: relative; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid var(--stone-200);
+  padding: 12px 0; font-family: var(--font-sans); font-size: 0.9rem;
+  color: var(--stone-800); transition: border-color 0.4s;
 }
-[dir="rtl"] .contact-form input, [dir="rtl"] .contact-form select, [dir="rtl"] .contact-form textarea {
+[dir="rtl"] .form-field input, [dir="rtl"] .form-field select, [dir="rtl"] .form-field textarea {
   font-family: var(--font-he-sans);
 }
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
-  outline: none; border-color: var(--stone-400);
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--amber-500);
 }
-.contact-form textarea { resize: vertical; min-height: 100px; }
+.form-field textarea { resize: none; min-height: 1px; }
+.form-field select { appearance: none; }
+.form-label {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--stone-400); margin-bottom: 8px; display: block;
+}
 .form-submit {
-  padding: 14px 32px; background: var(--stone-900); color: white;
-  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase; border-radius: 2px; transition: background 0.2s;
+  padding: 20px 56px; background: var(--stone-900); color: white;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; transition: background 0.5s;
   align-self: flex-start;
 }
 [dir="rtl"] .form-submit { align-self: flex-end; }
-.form-submit:hover { background: var(--stone-700); }
+.form-submit:hover { background: var(--amber-600); }
 
-.contact-info h3 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem; font-weight: 400; margin-bottom: 20px;
+.contact-info {
+  display: flex; flex-direction: column; justify-content: center; gap: 64px;
+  border-left: 1px solid var(--stone-100); padding-left: 64px;
 }
-[dir="rtl"] .contact-info h3 { font-family: var(--font-he-serif); }
-.contact-info p { font-size: 0.92rem; color: var(--stone-500); line-height: 1.7; margin-bottom: 32px; }
-.contact-detail {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 0; border-top: 1px solid var(--stone-100);
-  font-size: 0.9rem; color: var(--stone-700);
+[dir="rtl"] .contact-info { border-left: none; border-right: 1px solid var(--stone-100); padding-left: 0; padding-right: 64px; }
+.contact-info-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em;
+  color: var(--stone-400); margin-bottom: 16px;
 }
-.contact-detail svg { width: 18px; height: 18px; stroke: var(--stone-400); flex-shrink: 0; }
-.whatsapp-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-top: 28px; padding: 12px 24px;
-  background: #25D366; color: white;
-  font-size: 0.85rem; font-weight: 600; border-radius: 4px;
-  transition: background 0.2s;
+.contact-info-value { font-size: 1rem; color: var(--stone-800); font-weight: 300; line-height: 1.8; }
+.contact-socials { display: flex; gap: 24px; }
+.contact-socials a {
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  color: var(--stone-300); transition: color 0.3s;
 }
-.whatsapp-btn:hover { background: #1ebe57; }
-.whatsapp-btn svg { width: 20px; height: 20px; fill: white; }
+.contact-socials a:hover { color: var(--stone-900); }
+.contact-socials a svg { width: 22px; height: 22px; }
 
 /* ─── FOOTER ─── */
 footer {
-  border-top: 1px solid var(--stone-200);
-  padding: 40px 24px;
+  background: var(--stone-900); border-top: 1px solid var(--stone-800);
+  padding: 96px 48px;
 }
-.footer-inner {
-  max-width: 1200px; margin: 0 auto;
+.footer-top {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 96px; flex-wrap: wrap; gap: 48px;
+}
+.footer-brand .nav-logo { color: white; font-size: 1.4rem; margin-bottom: 24px; display: block; }
+.footer-brand p {
+  font-size: 0.85rem; color: var(--stone-500); max-width: 300px;
+  font-weight: 300; line-height: 1.7;
+}
+.footer-cols { display: flex; gap: 64px; }
+.footer-col h5 {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em;
+  color: var(--stone-600); margin-bottom: 24px;
+}
+.footer-col a {
+  display: block; font-size: 0.75rem; color: var(--stone-400);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  transition: color 0.3s; margin-bottom: 16px;
+}
+.footer-col a:hover { color: white; }
+.footer-bottom {
+  max-width: 1400px; margin: 0 auto;
+  padding-top: 48px; border-top: 1px solid var(--stone-800);
   display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
 }
-.footer-copy { font-size: 0.8rem; color: var(--stone-400); }
-.footer-links { display: flex; gap: 20px; }
-.footer-links a {
-  font-size: 0.8rem; color: var(--stone-500);
-  transition: color 0.2s;
+.footer-copy {
+  font-size: 0.65rem; color: var(--stone-600);
+  text-transform: uppercase; letter-spacing: 0.2em;
 }
-.footer-links a:hover { color: var(--stone-800); }
+.footer-legal { display: flex; gap: 32px; }
+.footer-legal a {
+  font-size: 0.65rem; color: var(--stone-600);
+  text-transform: uppercase; letter-spacing: 0.2em;
+  transition: color 0.3s;
+}
+.footer-legal a:hover { color: white; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes growLine {
+  from { width: 0; }
+  to { width: 80px; }
+}
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+/* Hero entrance */
+.hero-bg { animation: heroZoom 8s ease-out forwards; }
+.hero-tag { animation: fadeIn 1s ease 0.3s both; }
+.hero h1 { animation: fadeUp 1s ease 0.5s both; }
+.hero p { animation: fadeUp 1s ease 0.7s both; }
+.hero .hero-cta, .hero .hero-cta-outline { animation: fadeUp 0.8s ease 0.9s both; }
+.hero-scroll { animation: fadeIn 1s ease 1.4s both; }
+
+/* Scroll-triggered fade-ins */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Accent line animation on reveal */
+.accent-line {
+  width: 0;
+  transition: width 0.8s ease;
+}
+.reveal.visible .accent-line,
+.visible .accent-line {
+  width: 80px;
+}
+
+/* Gallery items scale in */
+.gallery-item {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.gallery-item.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Price cards stagger */
+.price-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.6s;
+}
+.price-card.visible { opacity: 1; transform: translateY(0); }
+
+/* Process steps stagger */
+.process-step {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.process-step.visible { opacity: 1; transform: translateY(0); }
+
+/* About image slide */
+.about-img {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.about-img.visible { opacity: 1; transform: translateX(0); }
+.about-text {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+}
+.about-text.visible { opacity: 1; transform: translateX(0); }
+
+/* Testimonial fade */
+.testimonial-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.testimonial-section.visible { opacity: 1; transform: translateY(0); }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .nav-links { display: none; }
   .mobile-menu-btn { display: block; }
-  .services-grid { grid-template-columns: 1fr; }
-  .gallery-row.pair .gallery-item img { aspect-ratio: 2 / 3; }
-  .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .process-step::after { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-stats { position: static; margin-top: 40px; }
-  .pricing-table { font-size: 0.85rem; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .nav-inner { padding: 0 24px; }
+  .section-luxury, .gallery-section { padding: 100px 24px; }
+  .services-grid { grid-template-columns: 1fr; gap: 64px; }
+  .service-block:last-child { padding-top: 0; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .process-line { display: none; }
+  .about-wrap { flex-direction: column; }
+  .about-img { width: 100%; height: 500px; }
+  .about-text { width: 100%; padding: 64px 24px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 64px; }
+  .contact-info { border-left: none; padding-left: 0; border-top: 1px solid var(--stone-100); padding-top: 64px; }
+  [dir="rtl"] .contact-info { border-right: none; padding-right: 0; }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; text-align: center; }
 }
 @media (max-width: 600px) {
   .gallery-row { flex-direction: column; }
   .gallery-row.pair .gallery-item img { aspect-ratio: auto; object-fit: initial; }
   .process-grid { grid-template-columns: 1fr; }
-  .pricing-table { display: block; overflow-x: auto; }
+  .form-row { grid-template-columns: 1fr; }
+  .pricing-header { flex-direction: column; }
+  .footer-cols { flex-direction: column; gap: 32px; }
 }
 </style>
 </head>
@@ -444,60 +608,40 @@ footer {
     <div class="nav-links" id="navLinks">
       <a href="#services" data-en="Services" data-he="שירותים">Services</a>
       <a href="#gallery" data-en="Portfolio" data-he="תיק עבודות">Portfolio</a>
-      <a href="#pricing" data-en="Pricing" data-he="מחירון">Pricing</a>
+      <a href="#pricing" data-en="Investment" data-he="מחירון">Investment</a>
       <a href="#about" data-en="About" data-he="אודות">About</a>
       <a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a>
       <div class="lang-toggle">
         <button id="langEn" class="active" onclick="setLang('en')">EN</button>
+        <span class="lang-sep"></span>
         <button id="langHe" onclick="setLang('he')">עב</button>
       </div>
     </div>
-    <a href="#contact" class="nav-cta" data-en="Get a Quote" data-he="הצעת מחיר">Get a Quote</a>
     <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
   </div>
 </nav>
 
-<!-- ━━━ HERO ━━━ -->
+<!-- ━━━ CINEMATIC HERO ━━━ -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
     <span class="hero-tag" data-en="Architectural Photography · Israel" data-he="צילום אדריכלות · ישראל">Architectural Photography · Israel</span>
     <h1 data-en="Capturing the soul of Israeli architecture" data-he="לוכדים את הנשמה של האדריכלות הישראלית">Capturing the soul of Israeli architecture</h1>
     <p data-en="Professional photography for architects, interior designers, real estate professionals, and collectors. From Bauhaus Tel Aviv to Jerusalem stone — every structure tells a story." data-he="צילום מקצועי לאדריכלים, מעצבי פנים, אנשי נדל״ן ואספנים. מבאוהאוס תל אביב ועד אבן ירושלמית — לכל מבנה יש סיפור.">Professional photography for architects, interior designers, real estate professionals, and collectors. From Bauhaus Tel Aviv to Jerusalem stone — every structure tells a story.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary" data-en="Get a Quote" data-he="קבלו הצעת מחיר">Get a Quote</a>
-      <a href="#gallery" class="btn-outline" data-en="View Portfolio" data-he="צפו בתיק עבודות">View Portfolio</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">200+</div>
-        <div class="hero-stat-label" data-en="Projects" data-he="פרויקטים">Projects</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">8+</div>
-        <div class="hero-stat-label" data-en="Years" data-he="שנות ניסיון">Years</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">50+</div>
-        <div class="hero-stat-label" data-en="Clients" data-he="לקוחות">Clients</div>
-      </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <a href="#contact" class="hero-cta" data-en="Get a Quote" data-he="קבלו הצעת מחיר">Get a Quote</a>
+      <a href="#gallery" class="hero-cta-outline" data-en="View Portfolio" data-he="צפו בתיק עבודות">View Portfolio</a>
     </div>
   </div>
+  <div class="hero-scroll">&#x2304;</div>
 </section>
 
-<!-- ━━━ SERVICES ━━━ -->
-<section class="section-alt" id="services">
-  <div class="section">
-    <div class="section-tag" data-en="What We Offer" data-he="מה אנחנו מציעים">What We Offer</div>
-    <div class="section-title" data-en="Two ways to work with us" data-he="שתי דרכים לעבוד איתנו">Two ways to work with us</div>
-    <div class="section-desc" data-en="Whether you need a shoot for your latest project or are looking for fine art prints — we have you covered." data-he="בין אם אתם צריכים צילום לפרויקט האחרון או מחפשים הדפסי אמנות — אנחנו כאן בשבילכם.">Whether you need a shoot for your latest project or are looking for fine art prints — we have you covered.</div>
-
+<!-- ━━━ LUXURY SERVICES ━━━ -->
+<section id="services" style="background: var(--stone-50);">
+  <div class="section-luxury">
     <div class="services-grid">
-      <!-- Photography Shoots -->
-      <div class="service-card">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"/></svg>
-        </div>
+      <div class="service-block reveal">
+        <div class="accent-line"></div>
         <h3 data-en="Photography Shoots" data-he="צילומים בשטח">Photography Shoots</h3>
         <p data-en="On-location sessions for architects, designers, developers, and property owners across Israel." data-he="צילומים במיקום עבור אדריכלים, מעצבים, יזמים ובעלי נכסים בכל רחבי ישראל.">On-location sessions for architects, designers, developers, and property owners across Israel.</p>
         <ul class="service-list">
@@ -508,11 +652,8 @@ footer {
           <li data-en="Construction progress documentation" data-he="תיעוד התקדמות בנייה">Construction progress documentation</li>
         </ul>
       </div>
-      <!-- Prints -->
-      <div class="service-card">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
-        </div>
+      <div class="service-block reveal reveal-delay-2">
+        <div class="accent-line"></div>
         <h3 data-en="Fine Art Prints" data-he="הדפסי אמנות">Fine Art Prints</h3>
         <p data-en="Museum-quality prints of iconic Israeli architecture for collectors, offices, hotels, and homes." data-he="הדפסות באיכות מוזיאלית של אדריכלות ישראלית איקונית לאספנים, משרדים, מלונות ובתים.">Museum-quality prints of iconic Israeli architecture for collectors, offices, hotels, and homes.</p>
         <ul class="service-list">
@@ -527,21 +668,19 @@ footer {
   </div>
 </section>
 
-<!-- ━━━ GALLERY ━━━ -->
+<!-- ━━━ GALLERY (ORIGINAL — PRESERVED) ━━━ -->
 <section id="gallery">
-  <div class="section">
-    <div class="section-tag" data-en="Selected Work" data-he="עבודות נבחרות">Selected Work</div>
-    <div class="section-title" data-en="Portfolio" data-he="תיק עבודות">Portfolio</div>
-    <div class="section-desc" data-en="A selection of projects across residential, commercial, heritage, and public architecture." data-he="מבחר פרויקטים באדריכלות מגורים, מסחרית, היסטורית וציבורית.">A selection of projects across residential, commercial, heritage, and public architecture.</div>
+  <div class="gallery-section">
+    <div class="section-tag reveal" data-en="Selected Work" data-he="עבודות נבחרות">Selected Work</div>
+    <div class="section-title reveal reveal-delay-1" data-en="Portfolio" data-he="תיק עבודות">Portfolio</div>
+    <div class="section-desc reveal reveal-delay-2" data-en="A selection of projects across residential, commercial, heritage, and public architecture." data-he="מבחר פרויקטים באדריכלות מגורים, מסחרית, היסטורית וציבורית.">A selection of projects across residential, commercial, heritage, and public architecture.</div>
 
     <div class="gallery-grid">
-      <!-- Row 1: single wide — classical staircase -->
       <div class="gallery-row single">
         <div class="gallery-item full">
           <img src="photos/_DSC0687_web.jpg" alt="Classical staircase interior with statue" loading="lazy">
         </div>
       </div>
-      <!-- Row 2: pair — curved ceiling + modern lobby -->
       <div class="gallery-row pair">
         <div class="gallery-item half">
           <img src="photos/_DSC8416_web.jpg" alt="Modern curved white ceiling" loading="lazy">
@@ -550,7 +689,6 @@ footer {
           <img src="photos/_DSC8417_web.jpg" alt="Modern lobby with grey sofas" loading="lazy">
         </div>
       </div>
-      <!-- Row 3: single wide — Bauhaus interior -->
       <div class="gallery-row single">
         <div class="gallery-item full">
           <img src="photos/_DSC6497_web.jpg" alt="Bauhaus interior with wooden bookshelves" loading="lazy">
@@ -560,215 +698,194 @@ footer {
   </div>
 </section>
 
-<!-- ━━━ PRICING ━━━ -->
-<section class="section-alt" id="pricing">
-  <div class="section">
-    <div class="section-tag" data-en="Investment" data-he="מחירון">Investment</div>
-    <div class="section-title" data-en="Transparent pricing" data-he="מחירים שקופים">Transparent pricing</div>
-    <div class="section-desc" data-en="Clear, upfront pricing so you know exactly what to expect. Custom packages available for larger projects." data-he="תמחור ברור ושקוף כדי שתדעו בדיוק למה לצפות. חבילות מותאמות לפרויקטים גדולים.">Clear, upfront pricing so you know exactly what to expect. Custom packages available for larger projects.</div>
+<!-- ━━━ PRICING CARDS (DARK) ━━━ -->
+<section class="section-dark" id="pricing">
+  <div class="section-luxury">
+    <div class="pricing-header">
+      <div>
+        <div class="section-tag" data-en="Investment" data-he="מחירון">Investment</div>
+        <h2 data-en="Tailored Excellence" data-he="מצוינות מותאמת">Tailored Excellence</h2>
+      </div>
+      <p data-en="Precision photography is an investment in your brand's visual legacy. Each session is customized." data-he="צילום מדויק הוא השקעה במורשת החזותית של המותג שלכם. כל סשן מותאם אישית.">Precision photography is an investment in your brand's visual legacy. Each session is customized.</p>
+    </div>
 
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th data-en="Service" data-he="שירות">Service</th>
-          <th data-en="Starting From" data-he="החל מ-">Starting From</th>
-          <th data-en="What's Included" data-he="מה כלול">What's Included</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="pricing-name" data-en="Apartment (Real Estate)" data-he="דירה (נדל״ן)">Apartment (Real Estate)</td>
-          <td class="pricing-price">₪2,500</td>
-          <td data-en="Up to 2 hours · 15–20 edited images · Web + print files" data-he="עד שעתיים · 15-20 תמונות ערוכות · קבצים לאינטרנט ודפוס">Up to 2 hours · 15–20 edited images · Web + print files</td>
-        </tr>
-        <tr>
-          <td class="pricing-name" data-en="Villa / Duplex" data-he="וילה / דופלקס">Villa / Duplex</td>
-          <td class="pricing-price">₪3,500</td>
-          <td data-en="Up to 3 hours · 25–30 images · Full retouching" data-he="עד 3 שעות · 25-30 תמונות · ריטוש מלא">Up to 3 hours · 25–30 images · Full retouching</td>
-        </tr>
-        <tr>
-          <td class="pricing-name" data-en="Designer / Architect Project" data-he="פרויקט מעצב / אדריכל">Designer / Architect Project</td>
-          <td class="pricing-price">₪4,000</td>
-          <td data-en="Half-day · Portfolio-grade editing · Styled compositions" data-he="חצי יום · עריכה ברמת תיק עבודות · קומפוזיציות מעוצבות">Half-day · Portfolio-grade editing · Styled compositions</td>
-        </tr>
-        <tr>
-          <td class="pricing-name" data-en="Commercial / Full Day" data-he="מסחרי / יום מלא">Commercial / Full Day</td>
-          <td class="pricing-price">₪5,500</td>
-          <td data-en="8 hours · Unlimited shots · Full post-production" data-he="8 שעות · צילומים ללא הגבלה · פוסט-פרודקשן מלא">8 hours · Unlimited shots · Full post-production</td>
-        </tr>
-        <tr>
-          <td class="pricing-name" data-en="Fine Art Print" data-he="הדפס אמנות">Fine Art Print</td>
-          <td class="pricing-price" data-en="From ₪800" data-he="החל מ-₪800">From ₪800</td>
-          <td data-en="Signed · Archival quality · Multiple sizes available" data-he="חתום · איכות ארכיונית · מגוון גדלים">Signed · Archival quality · Multiple sizes available</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="pricing-note" data-en="* Prices include VAT and apply to the central region (Rishon LeZion – Hadera). Travel supplement for other areas. All projects receive a detailed quote before booking." data-he="* המחירים כוללים מע״מ ומתייחסים לאזור המרכז (ראשון לציון – חדרה). תוספת נסיעה לאזורים אחרים. כל פרויקט מקבל הצעת מחיר מפורטת לפני הזמנה.">* Prices include VAT and apply to the central region (Rishon LeZion – Hadera). Travel supplement for other areas. All projects receive a detailed quote before booking.</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="price-card-label" data-en="Apartment / Real Estate" data-he="דירה / נדל״ן">Apartment / Real Estate</div>
+        <div class="price-card-price">₪2,500<span data-en="+ VAT" data-he="+ מע״מ">+ VAT</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-en="Up to 2 hours on-site" data-he="עד שעתיים באתר">Up to 2 hours on-site</li>
+          <li data-en="15–20 edited images" data-he="15-20 תמונות ערוכות">15–20 edited images</li>
+          <li data-en="Web + print files" data-he="קבצים לאינטרנט ודפוס">Web + print files</li>
+        </ul>
+        <a href="#contact" class="price-cta" data-en="Inquire" data-he="לפרטים">Inquire</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-card-label" data-en="Designer / Architect Project" data-he="פרויקט מעצב / אדריכל">Designer / Architect Project</div>
+        <div class="price-card-price">₪4,000<span data-en="+ VAT" data-he="+ מע״מ">+ VAT</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-en="Half-day production" data-he="חצי יום צילום">Half-day production</li>
+          <li data-en="Portfolio-grade editing" data-he="עריכה ברמת תיק עבודות">Portfolio-grade editing</li>
+          <li data-en="Styled compositions" data-he="קומפוזיציות מעוצבות">Styled compositions</li>
+        </ul>
+        <a href="#contact" class="price-cta" data-en="Most Requested" data-he="הכי מבוקש">Most Requested</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-label" data-en="Commercial / Full Day" data-he="מסחרי / יום מלא">Commercial / Full Day</div>
+        <div class="price-card-price">₪5,500<span data-en="+ VAT" data-he="+ מע״מ">+ VAT</span></div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li data-en="8 hours on-site" data-he="8 שעות באתר">8 hours on-site</li>
+          <li data-en="Unlimited shots" data-he="צילומים ללא הגבלה">Unlimited shots</li>
+          <li data-en="Full post-production" data-he="פוסט-פרודקשן מלא">Full post-production</li>
+        </ul>
+        <a href="#contact" class="price-cta" data-en="Consult" data-he="לייעוץ">Consult</a>
+      </div>
+    </div>
+    <p class="pricing-note" data-en="* Prices include VAT and apply to the central region. Travel supplement for other areas. All projects receive a detailed quote before booking." data-he="* המחירים כוללים מע״מ ומתייחסים לאזור המרכז. תוספת נסיעה לאזורים אחרים. כל פרויקט מקבל הצעת מחיר מפורטת לפני הזמנה.">* Prices include VAT and apply to the central region. Travel supplement for other areas. All projects receive a detailed quote before booking.</p>
   </div>
 </section>
 
 <!-- ━━━ PROCESS ━━━ -->
-<div>
-  <div class="section">
+<section style="background: white;">
+  <div class="section-luxury">
     <div class="section-tag" data-en="How It Works" data-he="איך זה עובד">How It Works</div>
-    <div class="section-title" data-en="From inquiry to delivery" data-he="מפנייה ועד משלוח">From inquiry to delivery</div>
-    <div class="section-desc" data-en="A streamlined process designed to respect your time and deliver exceptional results." data-he="תהליך יעיל שמכבד את הזמן שלכם ומספק תוצאות יוצאות דופן.">A streamlined process designed to respect your time and deliver exceptional results.</div>
+    <div style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 64px; color: var(--stone-900);" data-en="From inquiry to delivery" data-he="מפנייה ועד משלוח">From inquiry to delivery</div>
 
     <div class="process-grid">
+      <div class="process-line"></div>
       <div class="process-step">
         <div class="process-num">01</div>
-        <h4 data-en="Consultation" data-he="ייעוץ ראשוני">Consultation</h4>
-        <p data-en="We discuss your vision, timeline, intended use, and any specific requirements for the shoot." data-he="נדון בחזון שלכם, לוח זמנים, שימוש מיועד וכל דרישה ספציפית לצילום.">We discuss your vision, timeline, intended use, and any specific requirements for the shoot.</p>
+        <h4 data-en="Vision" data-he="ייעוץ ראשוני">Vision</h4>
+        <p data-en="Concept development and light mapping based on the building's orientation and your creative goals." data-he="פיתוח קונספט ומיפוי אור בהתבסס על כיוון המבנה והמטרות היצירתיות שלכם.">Concept development and light mapping based on the building's orientation and your creative goals.</p>
       </div>
       <div class="process-step">
         <div class="process-num">02</div>
-        <h4 data-en="Shoot Day" data-he="יום הצילום">Shoot Day</h4>
-        <p data-en="On-location photography timed for optimal natural light. Professional equipment and meticulous attention to detail." data-he="צילום במיקום בזמנים אופטימליים לאור טבעי. ציוד מקצועי ותשומת לב לפרטים.">On-location photography timed for optimal natural light. Professional equipment and meticulous attention to detail.</p>
+        <h4 data-en="Execution" data-he="יום הצילום">Execution</h4>
+        <p data-en="High-precision on-site photography using medium format equipment, timed for optimal natural light." data-he="צילום מדויק באתר עם ציוד פורמט בינוני, בזמנים אופטימליים לאור טבעי.">High-precision on-site photography using medium format equipment, timed for optimal natural light.</p>
       </div>
       <div class="process-step">
         <div class="process-num">03</div>
-        <h4 data-en="Editing" data-he="עריכה">Editing</h4>
-        <p data-en="Professional post-production including color correction, perspective adjustments, and retouching in Lightroom and Photoshop." data-he="פוסט-פרודקשן מקצועי כולל תיקון צבע, יישור פרספקטיבה וריטוש ב-Lightroom ו-Photoshop.">Professional post-production including color correction, perspective adjustments, and retouching in Lightroom and Photoshop.</p>
+        <h4 data-en="Curation" data-he="עריכה">Curation</h4>
+        <p data-en="Meticulous selection and post-production to enhance architectural intent — color, perspective, atmosphere." data-he="בחירה קפדנית ופוסט-פרודקשן כדי להעצים את הכוונה האדריכלית — צבע, פרספקטיבה, אווירה.">Meticulous selection and post-production to enhance architectural intent — color, perspective, atmosphere.</p>
       </div>
       <div class="process-step">
         <div class="process-num">04</div>
-        <h4 data-en="Delivery" data-he="משלוח">Delivery</h4>
-        <p data-en="High-res files delivered within one week via secure download link. Web-optimized and print-ready versions included." data-he="קבצים באיכות גבוהה מועברים תוך שבוע בקישור מאובטח. גרסאות מותאמות לאינטרנט ולדפוס כלולות.">High-res files delivered within one week via secure download link. Web-optimized and print-ready versions included.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ━━━ ABOUT ━━━ -->
-<section class="section-alt" id="about">
-  <div class="section">
-    <div class="about-grid">
-      <div class="about-img">
-        <img src="photos/camera-setup.jpg" alt="Fujifilm GFX medium format camera with tilt-shift lens on Manfrotto geared tripod head" loading="lazy">
-      </div>
-      <div class="about-text">
-        <div class="section-tag" data-en="About" data-he="אודות">About</div>
-        <h3 data-en="Where architecture meets artistry" data-he="הנקודה שבה אדריכלות פוגשת אמנות">Where architecture meets artistry</h3>
-        <p data-en="With over 8 years of experience photographing Israel's most compelling structures, I bring an architect's eye and an artist's sensibility to every project. My work has been featured in leading design publications and graces the portfolios of top Israeli architectural firms." data-he="עם למעלה מ-8 שנות ניסיון בצילום המבנים המרשימים ביותר בישראל, אני מביא עין של אדריכל ורגישות של אמן לכל פרויקט. העבודות שלי התפרסמו במגזינים מובילים ומופיעות בתיקי עבודות של משרדי אדריכלות מובילים.">With over 8 years of experience photographing Israel's most compelling structures, I bring an architect's eye and an artist's sensibility to every project. My work has been featured in leading design publications and graces the portfolios of top Israeli architectural firms.</p>
-        <p data-en="I believe great architectural photography doesn't just document a space — it reveals the intention behind the design. Every angle, every frame is chosen to honor the architect's vision while creating images that stand on their own as works of art." data-he="אני מאמין שצילום אדריכלי מעולה לא רק מתעד מרחב — הוא חושף את הכוונה מאחורי העיצוב. כל זווית, כל פריים נבחרים כדי לכבד את החזון של האדריכל ובד בבד ליצור תמונות שעומדות בפני עצמן כיצירות אמנות.">I believe great architectural photography doesn't just document a space — it reveals the intention behind the design. Every angle, every frame is chosen to honor the architect's vision while creating images that stand on their own as works of art.</p>
-        <div class="about-badges">
-          <div class="about-badge">
-            <div class="about-badge-num">200+</div>
-            <div class="about-badge-label" data-en="Projects" data-he="פרויקטים">Projects</div>
-          </div>
-          <div class="about-badge">
-            <div class="about-badge-num">50+</div>
-            <div class="about-badge-label" data-en="Clients" data-he="לקוחות">Clients</div>
-          </div>
-          <div class="about-badge">
-            <div class="about-badge-num">15+</div>
-            <div class="about-badge-label" data-en="Publications" data-he="פרסומים">Publications</div>
-          </div>
-        </div>
+        <h4 data-en="Legacy" data-he="משלוח">Legacy</h4>
+        <p data-en="Delivery of archival-quality files within one week. Web-optimized and print-ready versions included." data-he="משלוח קבצים באיכות ארכיונית תוך שבוע. גרסאות מותאמות לאינטרנט ולדפוס כלולות.">Delivery of archival-quality files within one week. Web-optimized and print-ready versions included.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ━━━ TESTIMONIALS ━━━ -->
-<div class="section-dark">
-  <div class="section">
-    <div class="section-tag" data-en="Client Words" data-he="מה לקוחות אומרים">Client Words</div>
-    <div class="section-title" data-en="Trusted by architects & designers" data-he="נותנים אמון — אדריכלים ומעצבים">Trusted by architects & designers</div>
-    <div class="section-desc" data-en="What our clients say about working with us." data-he="מה הלקוחות שלנו אומרים על העבודה איתנו.">What our clients say about working with us.</div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="testimonial-text" data-en="&ldquo;The images captured the essence of our project in a way we couldn't have imagined. Our clients were blown away by the portfolio.&rdquo;" data-he="&ldquo;התמונות לכדו את מהות הפרויקט שלנו בצורה שלא יכולנו לדמיין. הלקוחות שלנו היו מרותקים מתיק העבודות.&rdquo;">&ldquo;The images captured the essence of our project in a way we couldn't have imagined. Our clients were blown away by the portfolio.&rdquo;</div>
-        <div class="testimonial-author" data-en="Noa Levinson" data-he="נועה לוינסון">Noa Levinson</div>
-        <div class="testimonial-role" data-en="Principal Architect, Levinson Studio" data-he="אדריכלית ראשית, סטודיו לוינסון">Principal Architect, Levinson Studio</div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-text" data-en="&ldquo;Professional, punctual, and incredibly talented. The photos helped us sell a luxury apartment in Herzliya within two weeks of listing.&rdquo;" data-he="&ldquo;מקצועי, דייקן ומוכשר להפליא. התמונות עזרו לנו למכור דירת יוקרה בהרצליה תוך שבועיים מרגע הפרסום.&rdquo;">&ldquo;Professional, punctual, and incredibly talented. The photos helped us sell a luxury apartment in Herzliya within two weeks of listing.&rdquo;</div>
-        <div class="testimonial-author" data-en="Yaron Azulai" data-he="ירון אזולאי">Yaron Azulai</div>
-        <div class="testimonial-role" data-en="Real Estate Director, Azulai Group" data-he="מנהל נדל״ן, קבוצת אזולאי">Real Estate Director, Azulai Group</div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-text" data-en="&ldquo;The fine art prints we ordered for our lobby are stunning. Every visitor comments on them — they transformed our entrance completely.&rdquo;" data-he="&ldquo;ההדפסים שהזמנו ללובי מדהימים. כל מבקר מגיב עליהם — הם שינו את הכניסה לחלוטין.&rdquo;">&ldquo;The fine art prints we ordered for our lobby are stunning. Every visitor comments on them — they transformed our entrance completely.&rdquo;</div>
-        <div class="testimonial-author" data-en="Sarah Mitchell" data-he="שרה מיטשל">Sarah Mitchell</div>
-        <div class="testimonial-role" data-en="Interior Designer, SM Studio" data-he="מעצבת פנים, SM Studio">Interior Designer, SM Studio</div>
-      </div>
+<!-- ━━━ ABOUT ━━━ -->
+<section id="about" style="background: var(--stone-50); overflow: hidden;">
+  <div class="about-wrap">
+    <div class="about-img">
+      <img src="photos/camera-setup.jpg" alt="Fujifilm GFX medium format camera on Manfrotto tripod" loading="lazy">
     </div>
+    <div class="about-text">
+      <div class="section-tag" data-en="About" data-he="אודות">About</div>
+      <h3 data-en="Where architecture meets artistry" data-he="הנקודה שבה אדריכלות פוגשת אמנות">Where architecture meets artistry</h3>
+      <p data-en="With over 8 years of experience photographing Israel's most compelling structures, I bring an architect's eye and an artist's sensibility to every project. My work has been featured in leading design publications and graces the portfolios of top Israeli architectural firms." data-he="עם למעלה מ-8 שנות ניסיון בצילום המבנים המרשימים ביותר בישראל, אני מביא עין של אדריכל ורגישות של אמן לכל פרויקט. העבודות שלי התפרסמו במגזינים מובילים ומופיעות בתיקי עבודות של משרדי אדריכלות מובילים.">With over 8 years of experience photographing Israel's most compelling structures, I bring an architect's eye and an artist's sensibility to every project. My work has been featured in leading design publications and graces the portfolios of top Israeli architectural firms.</p>
+      <p data-en="I believe great architectural photography doesn't just document a space — it reveals the intention behind the design. Every angle, every frame is chosen to honor the architect's vision while creating images that stand on their own as works of art." data-he="אני מאמין שצילום אדריכלי מעולה לא רק מתעד מרחב — הוא חושף את הכוונה מאחורי העיצוב. כל זווית, כל פריים נבחרים כדי לכבד את החזון של האדריכל ובד בבד ליצור תמונות שעומדות בפני עצמן כיצירות אמנות.">I believe great architectural photography doesn't just document a space — it reveals the intention behind the design. Every angle, every frame is chosen to honor the architect's vision while creating images that stand on their own as works of art.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ SINGLE FEATURE TESTIMONIAL ━━━ -->
+<div class="section-dark">
+  <div class="testimonial-section">
+    <div class="testimonial-quote-mark">&ldquo;</div>
+    <div class="testimonial-text" data-en="The images captured the essence of our project in a way we couldn't have imagined. Our portfolio was transformed completely." data-he="התמונות לכדו את מהות הפרויקט שלנו בצורה שלא יכולנו לדמיין. תיק העבודות שלנו השתנה לחלוטין.">The images captured the essence of our project in a way we couldn't have imagined. Our portfolio was transformed completely.</div>
+    <div class="testimonial-author" data-en="Noa Levinson" data-he="נועה לוינסון">Noa Levinson</div>
+    <div class="testimonial-role" data-en="Principal Architect, Levinson Studio" data-he="אדריכלית ראשית, סטודיו לוינסון">Principal Architect, Levinson Studio</div>
   </div>
 </div>
 
 <!-- ━━━ CONTACT ━━━ -->
-<section id="contact">
-  <div class="section">
+<section id="contact" style="background: white;">
+  <div class="section-luxury">
     <div class="contact-grid">
       <div>
-        <div class="section-tag" data-en="Get in Touch" data-he="צרו קשר">Get in Touch</div>
-        <div class="section-title" data-en="Start your project" data-he="התחילו את הפרויקט שלכם">Start your project</div>
+        <div class="section-tag" data-en="Inquiry" data-he="צרו קשר">Inquiry</div>
+        <div class="contact-title" data-en="Begin the Dialogue" data-he="התחילו את הפרויקט שלכם">Begin the Dialogue</div>
         <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We\'ll be in touch shortly.')">
           <div class="form-row">
-            <div>
-              <label data-en="Name" data-he="שם">Name</label>
+            <div class="form-field">
+              <label class="form-label" data-en="Name" data-he="שם">Name</label>
               <input type="text" required>
             </div>
-            <div>
-              <label data-en="Email" data-he="אימייל">Email</label>
+            <div class="form-field">
+              <label class="form-label" data-en="Email" data-he="אימייל">Email</label>
               <input type="email" required>
             </div>
           </div>
-          <div class="form-row">
-            <div>
-              <label data-en="Phone" data-he="טלפון">Phone</label>
-              <input type="tel">
-            </div>
-            <div>
-              <label data-en="Service" data-he="שירות">Service</label>
-              <select id="serviceSelect">
-                <option value="" data-en="Select a service" data-he="בחרו שירות">Select a service</option>
-                <option value="shoot" data-en="Photography Shoot" data-he="צילום במיקום">Photography Shoot</option>
-                <option value="realestate" data-en="Real Estate Photography" data-he="צילום נדל״ן">Real Estate Photography</option>
-                <option value="print" data-en="Fine Art Print" data-he="הדפס אמנות">Fine Art Print</option>
-              </select>
-            </div>
+          <div class="form-field">
+            <label class="form-label" data-en="Service" data-he="שירות">Service</label>
+            <select id="serviceSelect">
+              <option value="" data-en="Select a service" data-he="בחרו שירות">Select a service</option>
+              <option value="shoot" data-en="Photography Shoot" data-he="צילום במיקום">Photography Shoot</option>
+              <option value="realestate" data-en="Real Estate Photography" data-he="צילום נדל״ן">Real Estate Photography</option>
+              <option value="print" data-en="Fine Art Print" data-he="הדפס אמנות">Fine Art Print</option>
+            </select>
           </div>
-          <div>
-            <label data-en="Tell us about your project" data-he="ספרו לנו על הפרויקט שלכם">Tell us about your project</label>
-            <textarea rows="4"></textarea>
+          <div class="form-field">
+            <label class="form-label" data-en="Tell us about your project" data-he="ספרו לנו על הפרויקט שלכם">Tell us about your project</label>
+            <textarea rows="3"></textarea>
           </div>
-          <button type="submit" class="form-submit" data-en="Send Inquiry" data-he="שליחת פנייה">Send Inquiry</button>
+          <button type="submit" class="form-submit" data-en="Send Request" data-he="שליחת פנייה">Send Request</button>
         </form>
       </div>
       <div class="contact-info">
-        <h3 data-en="Let's talk" data-he="בואו נדבר">Let's talk</h3>
-        <p data-en="Have a project in mind? Need a quick quote? Reach out through any of these channels and I'll get back to you within 24 hours." data-he="יש לכם פרויקט בראש? צריכים הצעת מחיר מהירה? פנו דרך אחד הערוצים ואחזור אליכם תוך 24 שעות.">Have a project in mind? Need a quick quote? Reach out through any of these channels and I'll get back to you within 24 hours.</p>
-        <div class="contact-detail">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          <span>050-XXX-XXXX</span>
+        <div>
+          <div class="contact-info-label" data-en="Israel HQ" data-he="משרד ישראל">Israel HQ</div>
+          <div class="contact-info-value" data-en="Ashkelon, Israel<br>Global Services Available" data-he="אשקלון, ישראל<br>שירות גלובלי">Ashkelon, Israel<br>Global Services Available</div>
         </div>
-        <div class="contact-detail">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          <span>hello@yoursite.co.il</span>
+        <div>
+          <div class="contact-info-label" data-en="Connect" data-he="התחברו">Connect</div>
+          <div class="contact-info-value">050-XXX-XXXX<br>hello@yoursite.co.il</div>
         </div>
-        <div class="contact-detail">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-          <span data-en="Based in Tel Aviv · Serving all Israel" data-he="מבוססים בתל אביב · משרתים את כל ישראל">Based in Tel Aviv · Serving all Israel</span>
+        <div class="contact-socials">
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/972XXXXXXXXX" target="_blank" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
         </div>
-        <a href="https://wa.me/972XXXXXXXXX" class="whatsapp-btn" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span>WhatsApp</span>
-        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ━━━ FOOTER ━━━ -->
+<!-- ━━━ LUXURY FOOTER ━━━ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-copy" data-en="© 2026 Frameshift Photography. All rights reserved." data-he="© 2026 Frameshift Photography. כל הזכויות שמורות.">© 2026 Frameshift Photography. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="#" data-en="Instagram" data-he="אינסטגרם">Instagram</a>
-      <a href="#" data-en="Terms" data-he="תנאי שימוש">Terms</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo" data-en="FRAMESHIFT" data-he="FRAMESHIFT">FRAMESHIFT</span>
+      <p data-en="Architecture. Photography. Intent. Defining the visual legacy of Israel's built environment since 2018." data-he="אדריכלות. צילום. כוונה. מגדירים את המורשת החזותית של הסביבה הבנויה בישראל מאז 2018.">Architecture. Photography. Intent. Defining the visual legacy of Israel's built environment since 2018.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5 data-en="Explore" data-he="חקרו">Explore</h5>
+        <a href="#gallery" data-en="Portfolio" data-he="תיק עבודות">Portfolio</a>
+        <a href="#services" data-en="Services" data-he="שירותים">Services</a>
+        <a href="#pricing" data-en="Investment" data-he="מחירון">Investment</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-en="Connect" data-he="צרו קשר">Connect</h5>
+        <a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a>
+        <a href="#" data-en="Instagram" data-he="אינסטגרם">Instagram</a>
+        <a href="#" data-en="WhatsApp" data-he="ווטסאפ">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-en="© 2026 Frameshift Photography — All Rights Reserved" data-he="© 2026 Frameshift Photography — כל הזכויות שמורות">© 2026 Frameshift Photography — All Rights Reserved</div>
+    <div class="footer-legal">
       <a href="#" data-en="Privacy" data-he="פרטיות">Privacy</a>
+      <a href="#" data-en="Terms" data-he="תנאים">Terms</a>
     </div>
   </div>
 </footer>
@@ -813,13 +930,13 @@ function toggleMobile() {
   } else {
     links.style.display = 'flex';
     links.style.position = 'absolute';
-    links.style.top = '64px';
+    links.style.top = '80px';
     links.style.left = '0';
     links.style.right = '0';
     links.style.background = 'var(--stone-50)';
     links.style.flexDirection = 'column';
-    links.style.padding = '20px 24px';
-    links.style.gap = '16px';
+    links.style.padding = '24px 48px';
+    links.style.gap = '20px';
     links.style.borderBottom = '1px solid var(--stone-200)';
   }
 }
@@ -831,12 +948,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu if open
-      if (window.innerWidth <= 900) {
+      if (window.innerWidth <= 1024) {
         document.getElementById('navLinks').style.display = 'none';
       }
     }
   });
+});
+
+// ─── SCROLL REVEAL ANIMATIONS ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Add stagger delay for grouped siblings (price cards, process steps, gallery items)
+      const el = entry.target;
+      const parent = el.parentElement;
+      if (parent && !el.classList.contains('reveal')) {
+        const siblings = Array.from(parent.children).filter(c => c === el || c.classList.contains(el.classList[0]));
+        const idx = siblings.indexOf(el);
+        if (idx > 0) el.style.transitionDelay = (idx * 0.12) + 's';
+      }
+      el.classList.add('visible');
+      revealObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+// Observe all animated elements
+document.querySelectorAll('.reveal, .gallery-item, .price-card, .process-step, .about-img, .about-text, .testimonial-section').forEach(el => {
+  revealObserver.observe(el);
 });
 </script>
 </body>
