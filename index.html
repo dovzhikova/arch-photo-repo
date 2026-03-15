@@ -463,6 +463,8 @@ footer {
 .testimonial-section.visible { opacity: 1; transform: translateY(0); }
 
 /* ─── RESPONSIVE ─── */
+
+/* Tablet (641–1024px) */
 @media (max-width: 1024px) {
   .nav-links { display: none; }
   .mobile-toggle { display: block; }
@@ -472,25 +474,31 @@ footer {
     background: var(--black); padding: 32px 48px; gap: 20px;
     border-bottom: 1px solid var(--dark-grey);
   }
-  .services-grid { grid-template-columns: 1fr; }
+  .process-line { display: none; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
   .pricing-header { flex-direction: column; align-items: flex-start; }
   .pricing-header > p { text-align: left; }
-  .pricing-cards { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
-  .process-line { display: none; }
-  .about-wrap { grid-template-columns: 1fr; }
+  .about-wrap { grid-template-columns: 1fr; padding: 80px 32px; }
+  .section-luxury { padding: 80px 32px; }
+  .gallery-section { padding: 80px 32px; }
+  .hero-content { padding: 0 32px; }
+  .nav-inner { padding: 0 24px; }
+  .contact-grid { gap: 60px; }
+}
+
+/* Small tablet / large phone (max 768px) */
+@media (max-width: 768px) {
   .contact-grid { grid-template-columns: 1fr; }
   .contact-info { border-left: none; padding-left: 0; border-top: 1px solid rgba(171,167,164,0.2); padding-top: 48px; }
   [dir="rtl"] .contact-info { border-right: none; padding-right: 0; }
+  .pricing-cards { grid-template-columns: 1fr; }
   .footer-top { flex-direction: column; gap: 40px; }
-  .section-luxury { padding: 80px 24px; }
-  .gallery-section { padding: 80px 24px; }
-  .about-wrap { padding: 80px 24px; }
-  .hero-content { padding: 0 24px; }
-  .nav-inner { padding: 0 24px; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+/* Phone (max 640px) */
 @media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
   .gallery-row.pair { flex-direction: column; }
   .gallery-item.half { width: 100%; }
   .process-grid { grid-template-columns: 1fr; }
@@ -503,7 +511,13 @@ footer {
   .contact-info { gap: 32px; }
   .pricing-note { color: var(--light-grey); }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .section-luxury { padding: 80px 24px; }
+  .gallery-section { padding: 80px 24px; }
+  .about-wrap { padding: 80px 24px; }
+  .hero-content { padding: 0 24px; }
 }
+
+/* Very short + narrow screens — hide viewfinder */
 @media (max-height: 700px) and (max-width: 640px) {
   .vf { display: none; }
 }
