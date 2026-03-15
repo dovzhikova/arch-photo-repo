@@ -30,7 +30,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; -webkit-user-select: none; user-select: none; pointer-events: none; -webkit-touch-callout: none; }
 a { text-decoration: none; color: inherit; }
 button { border: none; cursor: pointer; font-family: inherit; background: none; color: inherit; }
 
@@ -856,6 +856,10 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .gallery-item, .price-card, .process-step, .about-img, .about-text, .testimonial-section').forEach(el => {
   revealObserver.observe(el);
 });
+
+// Prevent image saving
+document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
 </script>
 </body>
 </html>
